@@ -1,3 +1,4 @@
+from datetime import time
 from exceptions.incorrect_column_count import IncorrectColumnCount
 
 
@@ -17,6 +18,15 @@ class CompetitorInfo:
         self.second_name_intitial = competitor_info_list[4]
         self.sex = competitor_info_list[5]
         self.age = int(competitor_info_list[6])
-        self.hour = int(competitor_info_list[7])
-        self.minutes = int(competitor_info_list[8])
-        self.seconds = int(competitor_info_list[9])
+        # self.hour = int(competitor_info_list[7])
+        # self.minutes = int(competitor_info_list[8])
+        # self.seconds = int(competitor_info_list[9])
+        self.time = time(
+            int(competitor_info_list[7]), 
+            int(competitor_info_list[8]), 
+            int(competitor_info_list[9])
+        )
+
+    def __str__(self) -> str:
+        # TODO Implement
+        pass
