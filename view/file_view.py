@@ -1,7 +1,7 @@
 from time import sleep
 from exceptions.incorrect_column_count import IncorrectColumnCount
 from exceptions.incorrect_file_extension import IncorrectFileExtension
-from controller.competitors_info_controller import CompetitorsInfoController
+from model.competitors_list import CompetitorsList
 from model.file_reader import FileReader
 from view.view_rendering import ViewRendering
 
@@ -31,7 +31,7 @@ class FileView(ViewRendering):
 
                 try: 
                     file_reader = FileReader(self.file_name)
-                    CompetitorsInfoController.competitors_list = file_reader.read_file()
+                    CompetitorsList.competitors_list = file_reader.read_file()
                     print('Archivo subido correctamente, en breve será redirigido al menú principal...')
                     break
                 

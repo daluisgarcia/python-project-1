@@ -18,15 +18,22 @@ class CompetitorInfo:
         self.second_name_intitial = competitor_info_list[4]
         self.sex = competitor_info_list[5]
         self.age = int(competitor_info_list[6])
-        # self.hour = int(competitor_info_list[7])
-        # self.minutes = int(competitor_info_list[8])
-        # self.seconds = int(competitor_info_list[9])
-        self.time = time(
+        self.final_time = time(
             int(competitor_info_list[7]), 
             int(competitor_info_list[8]), 
             int(competitor_info_list[9])
         )
 
+
+    def get_full_name(self) -> str:
+        return self.first_lastname+' '+self.second_lastname+', '+self.first_name+' '+self.second_name_intitial+'.'
+
+
     def __str__(self) -> str:
-        # TODO Implement
-        pass
+        return ("|{:10}|{:40}|{:5}|{:4}|{:8}|".format(
+            self.id, 
+            self.get_full_name(), 
+            self.sex, 
+            self.age,
+            str(self.final_time)
+        ))

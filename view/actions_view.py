@@ -1,4 +1,14 @@
+from time import sleep
+from view.possible_actions.action_eight import ActionEight
+from view.possible_actions.action_five import ActionFive
+from view.possible_actions.action_four import ActionFour
+from view.possible_actions.action_nine import ActionNine
 from view.possible_actions.action_one import ActionOne
+from view.possible_actions.action_seven import ActionSeven
+from view.possible_actions.action_six import ActionSix
+from view.possible_actions.action_ten import ActionTen
+from view.possible_actions.action_three import ActionThree
+from view.possible_actions.action_two import ActionTwo
 from view.view_rendering import ViewRendering
 
 
@@ -7,15 +17,15 @@ class ActionsView(ViewRendering):
     def __init__(self) -> None:
         self.possible_actions_objects: dict[str, ViewRendering] = {
             '1': ActionOne(), 
-            '2': ActionOne(), 
-            '3': ActionOne(), 
-            '4': ActionOne(), 
-            '5': ActionOne(), 
-            '6': ActionOne(), 
-            '7': ActionOne(), 
-            '8': ActionOne(), 
-            '9': ActionOne(), 
-            '10': ActionOne()
+            '2': ActionTwo(), 
+            '3': ActionThree(), 
+            '4': ActionFour(), 
+            '5': ActionFive(), 
+            '6': ActionSix(), 
+            '7': ActionSeven(), 
+            '8': ActionEight(), 
+            '9': ActionNine(), 
+            '10': ActionTen()
         }
     
     def render_view(self):
@@ -41,7 +51,9 @@ class ActionsView(ViewRendering):
                 break
 
             if option_selected not in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']:
-                print('Opción inválida')
+                self.clean_screen()
+                print('Opción inválida, intente de nuevo')
+                sleep(5)
                 continue
 
             self.possible_actions_objects[option_selected].render_view()

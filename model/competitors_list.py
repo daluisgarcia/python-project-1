@@ -1,9 +1,6 @@
 from model.competitor_info import CompetitorInfo
 
 
-class CompetitorsInfoController:
+class CompetitorsList:
     competitors_list: list[CompetitorInfo] = None
 
-    def action_one(self):
-        # TODO Implement
-        pass

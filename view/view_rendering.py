@@ -18,6 +18,11 @@ class ViewRendering(ABC):
             os.system('cls')
 
 
+    def view_pause(self):
+        print()
+        input('Presione la tecla enter para volver al menú de acción...')
+
+
     '''
     Abstract class for view rendering.
     '''
