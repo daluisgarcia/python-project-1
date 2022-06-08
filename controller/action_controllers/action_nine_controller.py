@@ -1,5 +1,4 @@
 from controller.action_controller import ActionController
-from model.competitors_list import CompetitorsList
 
 
 class ActionNineController(ActionController):

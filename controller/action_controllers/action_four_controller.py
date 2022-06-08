@@ -1,6 +1,4 @@
-from itertools import count
 from controller.action_controller import ActionController
-from model.competitors_list import CompetitorsList
 
 
 class ActionFourController(ActionController):

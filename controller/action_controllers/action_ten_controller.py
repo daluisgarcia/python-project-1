@@ -1,37 +1,31 @@
 from datetime import timedelta
 from controller.action_controller import ActionController
-from model.competitors_list import CompetitorsList
 
 
 class ActionTenController(ActionController):
     
     def execute(self):
-        male_total_seconds = 0
-        fem_total_seconds = 0
+        male_list = self._filter_by_sex('M')
+        fem_list = self._filter_by_sex('F')
 
-        junior_total_seconds = 0
-        senior_total_seconds = 0
-        master_total_seconds = 0
+        junior_list = self._filter_by_age_group('juniors')
+        senior_list = self._filter_by_age_group('seniors')
+        master_list = self._filter_by_age_group('masters')
 
-        for competitor in CompetitorsList.competitors_list:
-            competitor_seconds = (competitor.final_time.hour * 3600) + (competitor.final_time.minute * 60) + competitor.final_time.second
+        male_times = [(comp.final_time.hour * 3600) + (comp.final_time.minute * 60) + comp.final_time.second for comp in male_list]
+        male_total_seconds = sum(male_times)
 
-            # Sex validation
-            if competitor.sex == 'F':
-                fem_total_seconds += competitor_seconds
+        fem_times = [(comp.final_time.hour * 3600) + (comp.final_time.minute * 60) + comp.final_time.second for comp in fem_list]
+        fem_total_seconds = sum(fem_times)
 
-            elif competitor.sex == 'M':
-                male_total_seconds += competitor_seconds
+        junior_times = [(comp.final_time.hour * 3600) + (comp.final_time.minute * 60) + comp.final_time.second for comp in junior_list]
+        junior_total_seconds = sum(junior_times)
 
-            # Ethnic group validation
-            if competitor.age <= 25:
-                junior_total_seconds += competitor_seconds
+        senior_times = [(comp.final_time.hour * 3600) + (comp.final_time.minute * 60) + comp.final_time.second for comp in senior_list]
+        senior_total_seconds = sum(senior_times)
 
-            elif competitor.age > 25 and competitor.age <= 40:
-                senior_total_seconds += competitor_seconds
-
-            else:
-                master_total_seconds += competitor_seconds
+        master_times = [(comp.final_time.hour * 3600) + (comp.final_time.minute * 60) + comp.final_time.second for comp in master_list]
+        master_total_seconds = sum(master_times)
 
         age_group_count = self._get_count_by_age_group()
         sex_counts = self._get_count_by_sex()

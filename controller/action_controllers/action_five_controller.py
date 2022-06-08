@@ -1,7 +1,4 @@
-from datetime import time
 from controller.action_controller import ActionController
-from model.competitor_info import CompetitorInfo
-from model.competitors_list import CompetitorsList
 
 
 class ActionFiveController(ActionController):
